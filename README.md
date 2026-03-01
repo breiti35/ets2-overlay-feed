@@ -11,6 +11,8 @@ Hier findest du:
 
 ## Schnellstart
 
+Status-Seite: <https://breiti35.github.io/ets2-overlay-feed/>
+
 1. Öffne die aktuellen Downloads: [Releases](https://github.com/breiti35/ets2-overlay-feed/releases/latest)
 2. Installiere die passende Datei:
    - Windows: `ETS2.Overlay.Setup-<version>.exe`

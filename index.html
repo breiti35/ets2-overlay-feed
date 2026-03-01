@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ETS2 Overlay Feed</title>
+  <meta name="description" content="Public release feed, downloads and docs for ETS2 Overlay." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-0: #0d1117;
+      --bg-1: #111827;
+      --bg-2: #1f2937;
+      --line: #2e3a4a;
+      --text-0: #f2f5f8;
+      --text-1: #c7d2de;
+      --text-2: #8b9aab;
+      --acc-0: #f59e0b;
+      --acc-1: #fb7185;
+      --ok: #10b981;
+      --radius: 14px;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text-0);
+      font-family: "Space Grotesk", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(1200px 500px at 100% -20%, rgba(251, 113, 133, 0.16), transparent 60%),
+        radial-gradient(900px 500px at 0% 110%, rgba(245, 158, 11, 0.12), transparent 60%),
+        linear-gradient(160deg, var(--bg-0), var(--bg-1) 45%, #0b1220);
+      padding: 28px 18px 42px;
+    }
+
+    .shell {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero {
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      background: linear-gradient(160deg, rgba(17, 24, 39, 0.82), rgba(15, 23, 42, 0.76));
+      box-shadow: var(--shadow);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -90px;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.18), transparent 65%);
+      pointer-events: none;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+      letter-spacing: 0.01em;
+      line-height: 1.15;
+    }
+
+    .sub {
+      margin: 9px 0 0;
+      color: var(--text-1);
+      max-width: 760px;
+      line-height: 1.5;
+    }
+
+    .meta {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid #3a4759;
+      background: rgba(12, 19, 30, 0.72);
+      color: var(--text-1);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--ok);
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.18);
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1.3fr 1fr;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(170deg, rgba(17, 24, 39, 0.84), rgba(15, 23, 42, 0.74));
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .title {
+      margin: 0;
+      font-size: 1rem;
+      color: var(--text-1);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .version {
+      margin: 8px 0 0;
+      font-size: clamp(1.5rem, 2.6vw, 2rem);
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .changelog {
+      margin: 8px 0 0;
+      color: var(--text-1);
+      line-height: 1.45;
+      font-size: 0.96rem;
+      min-height: 2.9em;
+    }
+
+    .actions {
+      margin-top: 15px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 44px;
+      text-decoration: none;
+      border-radius: 10px;
+      border: 1px solid #405066;
+      color: var(--text-0);
+      background: #1b2638;
+      font-weight: 600;
+      padding: 10px 12px;
+      transition: transform 120ms ease, background-color 120ms ease, border-color 120ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: #63748f;
+      background: #213146;
+    }
+
+    .btn.primary {
+      border-color: #b45309;
+      background: linear-gradient(135deg, #c26b0d, #a54f0f);
+      color: #fff8eb;
+    }
+
+    .btn.primary:hover {
+      border-color: #f59e0b;
+      background: linear-gradient(135deg, #db7b10, #b15d13);
+    }
+
+    .btn.disabled {
+      pointer-events: none;
+      opacity: 0.5;
+      filter: grayscale(0.2);
+    }
+
+    .links {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .links a {
+      color: #f7d48a;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(247, 212, 138, 0.38);
+      width: fit-content;
+    }
+
+    .links a:hover {
+      color: #fbe8be;
+      border-bottom-color: rgba(251, 232, 190, 0.7);
+    }
+
+    .note {
+      margin: 14px 0 0;
+      color: var(--text-2);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .wiki {
+      margin-top: 10px;
+      font-family: "Source Serif 4", Georgia, serif;
+      color: #d7e1eb;
+      line-height: 1.55;
+      font-size: 1rem;
+    }
+
+    footer {
+      margin-top: 8px;
+      text-align: center;
+      color: var(--text-2);
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <h1>ETS2 Overlay Feed</h1>
+      <p class="sub">
+        Public release feed, direct downloads and quick docs for the ETS2 Overlay desktop app.
+      </p>
+      <div class="meta">
+        <span class="chip"><span class="dot"></span> Feed online</span>
+        <span class="chip" id="meta-version">Version: loading...</span>
+        <span class="chip" id="meta-updated">Updated: waiting for feed...</span>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2 class="title">Latest Release</h2>
+        <p class="version" id="version">v-</p>
+        <p class="changelog" id="changelog">Reading release feed...</p>
+        <div class="actions">
+          <a class="btn primary" id="btn-windows" href="#" rel="noopener">Download for Windows</a>
+          <a class="btn primary" id="btn-linux" href="#" rel="noopener">Download for Linux</a>
+          <a class="btn" id="btn-release" href="https://github.com/breiti35/ets2-overlay-feed/releases/latest" rel="noopener">Open Release Page</a>
+          <a class="btn" id="btn-version-json" href="version.json" rel="noopener">Open version.json</a>
+        </div>
+        <p class="note" id="feed-source">
+          Source: <code>version.json</code>
+        </p>
+      </article>
+
+      <article class="card">
+        <h2 class="title">Documentation</h2>
+        <div class="links">
+          <a href="docs/README.md">Docs Overview</a>
+          <a href="docs/Funktionen.md">Functions</a>
+          <a href="docs/Einstellungen.md">Settings</a>
+          <a href="docs/Bot-Kommandos.md">Bot Commands</a>
+          <a href="docs/Problemloesung.md">Troubleshooting</a>
+          <a href="wiki/Home.md">Wiki Home</a>
+        </div>
+        <p class="wiki">
+          If you open an issue in this public repo, it is mirrored to the private development tracker automatically.
+        </p>
+      </article>
+    </section>
+
+    <footer>
+      ETS2 Overlay Feed · Public mirror for releases and updater metadata
+    </footer>
+  </main>
+
+  <script>
+    const els = {
+      version: document.getElementById('version'),
+      changelog: document.getElementById('changelog'),
+      metaVersion: document.getElementById('meta-version'),
+      metaUpdated: document.getElementById('meta-updated'),
+      source: document.getElementById('feed-source'),
+      windows: document.getElementById('btn-windows'),
+      linux: document.getElementById('btn-linux'),
+      release: document.getElementById('btn-release'),
+    };
+
+    function applyLink(button, url) {
+      if (typeof url === 'string' && url.trim()) {
+        button.href = url;
+        button.target = '_blank';
+        button.classList.remove('disabled');
+      } else {
+        button.href = '#';
+        button.target = '_self';
+        button.classList.add('disabled');
+      }
+    }
+
+    async function loadFeed() {
+      const sourceUrl = 'version.json';
+      try {
+        const res = await fetch(sourceUrl, { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+
+        const version = data.version || '-';
+        const changelog = data.changelog || 'No changelog provided in feed.';
+
+        els.version.textContent = 'v' + version;
+        els.changelog.textContent = changelog;
+        els.metaVersion.textContent = 'Version: ' + version;
+        els.metaUpdated.textContent = 'Updated: ' + new Date().toLocaleString('de-DE');
+        els.source.innerHTML = 'Source: <code>' + sourceUrl + '</code>';
+
+        applyLink(els.windows, data.downloadUrlWindows || '');
+        applyLink(els.linux, data.downloadUrlLinux || '');
+
+        if (data.downloadUrl && String(data.downloadUrl).trim()) {
+          els.release.href = data.downloadUrl;
+          els.release.target = '_blank';
+        }
+      } catch (err) {
+        els.version.textContent = 'v-';
+        els.changelog.textContent = 'Feed could not be loaded: ' + (err.message || 'unknown error');
+        els.metaVersion.textContent = 'Version: unavailable';
+        els.metaUpdated.textContent = 'Updated: feed unavailable';
+        els.source.innerHTML = 'Source: <code>version.json</code> (error)';
+        applyLink(els.windows, '');
+        applyLink(els.linux, '');
+      }
+    }
+
+    loadFeed();
+  </script>
+</body>
+</html>
