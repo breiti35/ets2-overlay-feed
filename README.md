@@ -56,4 +56,5 @@ Wenn etwas nicht funktioniert, starte mit [Problemlösung](docs/Problemloesung.m
 Neue Issues in diesem öffentlichen Repository werden automatisch in das private Entwicklungs-Repository gespiegelt, damit die Umsetzung intern erfolgen kann.
 
 - Du erhältst im öffentlichen Issue einen Kommentar mit der internen Referenz.
+- Labels aus dem öffentlichen Issue werden automatisch ins private Issue übernommen.
 - Der öffentliche Thread bleibt für Rückfragen sichtbar.

@@ -40,7 +40,9 @@ jobs:
           issue_body="$(jq -r '.issue.body // ""' "$GITHUB_EVENT_PATH")"
           issue_url="$(jq -r '.issue.html_url' "$GITHUB_EVENT_PATH")"
           issue_author="$(jq -r '.issue.user.login' "$GITHUB_EVENT_PATH")"
-          labels_csv="$(jq -r '[.issue.labels[].name] | join(", ")' "$GITHUB_EVENT_PATH")"
+          labels_json="$(jq -c '[.issue.labels[]? | {name: .name, color: (.color // "ededed"), description: (.description // "")}]' "$GITHUB_EVENT_PATH")"
+          label_names_json="$(jq -c 'map(.name)' <<< "$labels_json")"
+          labels_csv="$(jq -r 'if length == 0 then "keine" else map(.name) | join(", ") end' <<< "$labels_json")"
 
           mirrored_body=$(printf '%s\n' \
             '## Public Issue Mirror' \
@@ -58,13 +60,30 @@ jobs:
             "${issue_body}"
           )
 
+          mapfile -t label_entries < <(jq -c '.[]' <<< "$labels_json")
+          for label_entry in "${label_entries[@]}"; do
+            label_name="$(jq -r '.name' <<< "$label_entry")"
+            label_color="$(jq -r '.color' <<< "$label_entry")"
+            label_desc="$(jq -r '.description' <<< "$label_entry")"
+            label_name_encoded="$(jq -nr --arg v "$label_name" '$v|@uri')"
+
+            if ! GH_TOKEN="$PRIVATE_TOKEN" gh api "repos/${PRIVATE_REPO}/labels/${label_name_encoded}" >/dev/null 2>&1; then
+              GH_TOKEN="$PRIVATE_TOKEN" gh api "repos/${PRIVATE_REPO}/labels" \
+                --method POST \
+                -f name="$label_name" \
+                -f color="$label_color" \
+                -f description="$label_desc" >/dev/null
+            fi
+          done
+
           payload=$(jq -n \
             --arg title "[Public] ${issue_title}" \
             --arg body "$mirrored_body" \
-            '{title: $title, body: $body}')
+            --argjson labels "$label_names_json" \
+            '{title: $title, body: $body, labels: $labels}')
 
           created=$(GH_TOKEN="$PRIVATE_TOKEN" gh api "repos/${PRIVATE_REPO}/issues" --method POST --input - <<< "$payload")
           private_number="$(jq -r '.number' <<< "$created")"
 
-          public_note="Danke! Dein Issue wurde intern an unser privates Tracker-Repository gespiegelt (Referenz #${private_number})."
+          public_note="Danke! Dein Issue wurde intern an unser privates Tracker-Repository gespiegelt (Referenz #${private_number}). Labels wurden ebenfalls uebernommen."
           GH_TOKEN="$PUBLIC_TOKEN" gh api "repos/${REPO}/issues/${issue_number}/comments" -f body="$public_note" >/dev/null
