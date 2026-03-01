@@ -59,6 +59,7 @@ Eigene Sparte fuer ein Desktop-Overlay direkt ueber dem Spiel (getrennt vom OBS 
 - globaler Hotkey zum Ein-/Ausblenden
 - Widgets einzeln steuerbar: `job`, `fuel`, `damage`, `time`, `indicators`, `weather`, `session`, `radar`, `gear`
 - Legacy-Option: `info` als Komplettpanel bleibt optional verfuegbar
+- Legacy-`info` nutzt volle Fensterhoehe, damit keine Unter-Module abgeschnitten werden
 - In-Game Layout Designer mit Drag-and-Drop fuer Widget-Positionen (X/Y werden live synchronisiert)
 
 ## Twitch Setup
