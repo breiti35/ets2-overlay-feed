@@ -1,7 +1,7 @@
 {
-  "version": "1.0.8",
+  "version": "1.0.9",
   "downloadUrl": "https://breiti35.github.io/ets2-overlay-feed/",
-  "downloadUrlLinux": "https://github.com/breiti35/ets2-overlay-feed/releases/download/v1.0.8/ETS2.Overlay-1.0.8.AppImage",
-  "downloadUrlWindows": "https://github.com/breiti35/ets2-overlay-feed/releases/download/v1.0.8/ETS2.Overlay.Setup-1.0.8.exe",
-  "changelog": "Updater nutzt jetzt oeffentliche Feed-Downloads ohne 404 und oeffnet externe Links direkt im Standardbrowser"
+  "downloadUrlLinux": "https://github.com/breiti35/ets2-overlay-feed/releases/download/v1.0.9/ETS2.Overlay-1.0.9.AppImage",
+  "downloadUrlWindows": "https://github.com/breiti35/ets2-overlay-feed/releases/download/v1.0.9/ETS2.Overlay.Setup-1.0.9.exe",
+  "changelog": "Minimal-Clean Theme im Overlay modernisiert und Update-Banner auf zentrale Download-Seite umgestellt"
 }
