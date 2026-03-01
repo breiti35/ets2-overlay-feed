@@ -54,6 +54,7 @@ Eigene Sparte fuer ein Desktop-Overlay direkt ueber dem Spiel (getrennt vom OBS 
 - Plattformziel: Windows stabil, Linux experimentell
 - Global ein-/ausschalten
 - Always-on-top, Click-through, Deckkraft
+- Auto-Hide bei Fokusverlust (Overlay blendet automatisch aus, wenn ETS2/ATS nicht im Vordergrund ist)
 - Radar FPS Limit waehlbar (`24`, `30`, `45`, `60`) fuer bessere Performance-Kontrolle
 - globaler Hotkey zum Ein-/Ausblenden
 - Widgets einzeln steuerbar: `job`, `fuel`, `damage`, `time`, `indicators`, `weather`, `session`, `radar`, `gear`
