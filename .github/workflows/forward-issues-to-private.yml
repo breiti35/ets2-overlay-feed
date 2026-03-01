@@ -1,0 +1,70 @@
+name: Forward Public Issues
+
+on:
+  issues:
+    types:
+      - opened
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  PRIVATE_REPO: breiti35/ets2-overlay
+
+jobs:
+  forward:
+    name: Mirror issue to private tracker
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate bridge token
+        run: |
+          if [ -z "${{ secrets.PRIVATE_ISSUE_BRIDGE_TOKEN }}" ]; then
+            echo "Fehler: Secret PRIVATE_ISSUE_BRIDGE_TOKEN fehlt."
+            exit 1
+          fi
+
+      - name: Create private issue and acknowledge publicly
+        env:
+          PRIVATE_TOKEN: ${{ secrets.PRIVATE_ISSUE_BRIDGE_TOKEN }}
+          PUBLIC_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          ACTOR: ${{ github.actor }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+
+          issue_number="$(jq -r '.issue.number' "$GITHUB_EVENT_PATH")"
+          issue_title="$(jq -r '.issue.title' "$GITHUB_EVENT_PATH")"
+          issue_body="$(jq -r '.issue.body // ""' "$GITHUB_EVENT_PATH")"
+          issue_url="$(jq -r '.issue.html_url' "$GITHUB_EVENT_PATH")"
+          issue_author="$(jq -r '.issue.user.login' "$GITHUB_EVENT_PATH")"
+          labels_csv="$(jq -r '[.issue.labels[].name] | join(", ")' "$GITHUB_EVENT_PATH")"
+
+          mirrored_body=$(printf '%s\n' \
+            '## Public Issue Mirror' \
+            '' \
+            'Diese Anfrage wurde automatisch aus dem öffentlichen Repository gespiegelt.' \
+            '' \
+            "- Quelle: ${issue_url}" \
+            "- Autor: @${issue_author}" \
+            "- Labels: ${labels_csv:-keine}" \
+            "- Ausgeloest von: @${ACTOR}" \
+            "- Workflow-Run: ${RUN_URL}" \
+            '' \
+            '---' \
+            '' \
+            "${issue_body}"
+          )
+
+          payload=$(jq -n \
+            --arg title "[Public] ${issue_title}" \
+            --arg body "$mirrored_body" \
+            '{title: $title, body: $body}')
+
+          created=$(GH_TOKEN="$PRIVATE_TOKEN" gh api "repos/${PRIVATE_REPO}/issues" --method POST --input - <<< "$payload")
+          private_number="$(jq -r '.number' <<< "$created")"
+
+          public_note="Danke! Dein Issue wurde intern an unser privates Tracker-Repository gespiegelt (Referenz #${private_number})."
+          GH_TOKEN="$PUBLIC_TOKEN" gh api "repos/${REPO}/issues/${issue_number}/comments" -f body="$public_note" >/dev/null

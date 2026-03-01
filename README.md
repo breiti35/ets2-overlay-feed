@@ -50,3 +50,10 @@ Beispiel-Felder:
 ## Support
 
 Wenn etwas nicht funktioniert, starte mit [Problemlösung](docs/Problemloesung.md). Dort sind die häufigsten Ursachen und Fixes gesammelt.
+
+## Issue-Handling
+
+Neue Issues in diesem öffentlichen Repository werden automatisch in das private Entwicklungs-Repository gespiegelt, damit die Umsetzung intern erfolgen kann.
+
+- Du erhältst im öffentlichen Issue einen Kommentar mit der internen Referenz.
+- Der öffentliche Thread bleibt für Rückfragen sichtbar.
