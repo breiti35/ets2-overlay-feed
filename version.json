@@ -1,7 +1,7 @@
 {
-  "version": "1.0.7",
-  "downloadUrl": "https://github.com/breiti35/ets2-overlay-feed/releases/tag/v1.0.7",
-  "changelog": "System-Menue im Settings-UI aufgeraeumt: klarere Gruppen fuer Update, Diagnose und OBS",
-  "downloadUrlLinux": "https://github.com/breiti35/ets2-overlay-feed/releases/download/v1.0.7/ETS2.Overlay-1.0.7.AppImage",
-  "downloadUrlWindows": "https://github.com/breiti35/ets2-overlay-feed/releases/download/v1.0.7/ETS2.Overlay.Setup-1.0.7.exe"
+  "version": "1.0.8",
+  "downloadUrl": "https://github.com/breiti35/ets2-overlay-feed/releases/tag/v1.0.8",
+  "downloadUrlLinux": "https://github.com/breiti35/ets2-overlay-feed/releases/download/v1.0.8/ETS2.Overlay-1.0.8.AppImage",
+  "downloadUrlWindows": "https://github.com/breiti35/ets2-overlay-feed/releases/download/v1.0.8/ETS2.Overlay.Setup-1.0.8.exe",
+  "changelog": "Updater nutzt jetzt oeffentliche Feed-Downloads ohne 404 und oeffnet externe Links direkt im Standardbrowser"
 }
