@@ -11,8 +11,6 @@ Hier findest du:
 
 ## Schnellstart
 
-Status-Seite: <https://breiti35.github.io/ets2-overlay-feed/>
-
 1. Öffne die aktuellen Downloads: [Releases](https://github.com/breiti35/ets2-overlay-feed/releases/latest)
 2. Installiere die passende Datei:
    - Windows: `ETS2.Overlay.Setup-<version>.exe`
@@ -52,11 +50,3 @@ Beispiel-Felder:
 ## Support
 
 Wenn etwas nicht funktioniert, starte mit [Problemlösung](docs/Problemloesung.md). Dort sind die häufigsten Ursachen und Fixes gesammelt.
-
-## Issue-Handling
-
-Neue Issues in diesem öffentlichen Repository werden automatisch in das private Entwicklungs-Repository gespiegelt, damit die Umsetzung intern erfolgen kann.
-
-- Du erhältst im öffentlichen Issue einen Kommentar mit der internen Referenz.
-- Labels aus dem öffentlichen Issue werden automatisch ins private Issue übernommen.
-- Der öffentliche Thread bleibt für Rückfragen sichtbar.

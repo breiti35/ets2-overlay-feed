@@ -17,6 +17,7 @@ Das Control Panel ist in mehrere Bereiche aufgeteilt.
 
 - Theme wechseln
 - Farben, Transparenz und Stilwerte anpassen
+- `Minimal (Clean)` bietet einen aufgeräumten, helleren Widget-Look
 
 ## System
 
@@ -43,6 +44,7 @@ Das Control Panel ist in mehrere Bereiche aufgeteilt.
 - manuell auf Updates prüfen
 - Diagnose aktualisieren
 - erweiterte Diagnose starten
+- Der Banner-Button führt auf die öffentliche Download-Seite mit Plattform-Auswahl
 
 ## Twitch Setup
 
