@@ -1,5 +1,5 @@
 {
-  "version": "1.0.6",
+  "version": "1.0.7",
   "downloadUrl": "https://github.com/breiti35/ets2-overlay/releases/latest",
-  "changelog": "Update-Checker nutzt jetzt oeffentlichen Feed mit Fallback und zeigt klare Fehlerdetails im UI"
+  "changelog": "System-Menue im Settings-UI aufgeraeumt: klarere Gruppen fuer Update, Diagnose und OBS"
 }
