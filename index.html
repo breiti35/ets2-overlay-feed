@@ -9,19 +9,72 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500&display=swap" rel="stylesheet" />
   <style>
+    /* --- PREMIUM THEMA (Hell & Dunkel mit Glassmorphism) --- */
     :root {
-      --bg-0: #0d1117;
-      --bg-1: #111827;
-      --bg-2: #1f2937;
-      --line: #2e3a4a;
-      --text-0: #f2f5f8;
-      --text-1: #c7d2de;
-      --text-2: #8b9aab;
-      --acc-0: #f59e0b;
-      --acc-1: #fb7185;
-      --ok: #10b981;
-      --radius: 14px;
-      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      /* Basis Farben (Hell) */
+      --bg-body: #f1f5f9;
+      --line: rgba(226, 232, 240, 0.6);
+      --text-0: #0f172a; 
+      --text-1: #475569; 
+      --text-2: #64748b; 
+      
+      /* Akzentfarben */
+      --acc-primary: #0ea5e9; 
+      --acc-secondary: #6366f1;
+      --ok: #10b981; 
+      --radius: 24px; 
+      
+      /* Hintergrund-Gradienten (Hell) */
+      --mesh-1: rgba(99, 102, 241, 0.12);
+      --mesh-2: rgba(14, 165, 233, 0.15);
+      --mesh-3: rgba(244, 63, 94, 0.08);
+      --mesh-4: rgba(16, 185, 129, 0.08);
+      
+      /* Glassmorphism Flächen (Hell) */
+      --card-bg: rgba(255, 255, 255, 0.65);
+      --card-border: rgba(255, 255, 255, 0.8);
+      --card-shadow-inner: rgba(255, 255, 255, 0.6);
+      --spotlight: rgba(255, 255, 255, 0.9);
+      
+      --chip-bg: rgba(255, 255, 255, 0.5);
+      --changelog-bg: rgba(255, 255, 255, 0.4);
+      --btn-bg: rgba(255, 255, 255, 0.6);
+      --btn-hover: #ffffff;
+      --list-bg: rgba(255, 255, 255, 0.4);
+      --list-hover: #ffffff;
+      --code-bg: rgba(0,0,0,0.04);
+      --wiki-bg: linear-gradient(to right, rgba(251, 211, 141, 0.15), transparent);
+    }
+
+    /* --- DARK MODE VARIABLEN --- */
+    [data-theme="dark"] {
+      --bg-body: #0b1121; /* Sehr dunkles Blaugrau */
+      --line: rgba(51, 65, 85, 0.6);
+      --text-0: #f8fafc; 
+      --text-1: #cbd5e1; 
+      --text-2: #94a3b8; 
+      
+      --acc-primary: #38bdf8; 
+      --acc-secondary: #818cf8;
+      
+      --mesh-1: rgba(99, 102, 241, 0.15);
+      --mesh-2: rgba(14, 165, 233, 0.15);
+      --mesh-3: rgba(244, 63, 94, 0.1);
+      --mesh-4: rgba(16, 185, 129, 0.1);
+      
+      --card-bg: rgba(30, 41, 59, 0.5);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-shadow-inner: rgba(255, 255, 255, 0.03);
+      --spotlight: rgba(15, 23, 42, 0.7);
+      
+      --chip-bg: rgba(15, 23, 42, 0.5);
+      --changelog-bg: rgba(15, 23, 42, 0.4);
+      --btn-bg: rgba(30, 41, 59, 0.4);
+      --btn-hover: rgba(51, 65, 85, 0.6);
+      --list-bg: rgba(30, 41, 59, 0.3);
+      --list-hover: rgba(51, 65, 85, 0.5);
+      --code-bg: rgba(255, 255, 255, 0.1);
+      --wiki-bg: linear-gradient(to right, rgba(251, 211, 141, 0.05), transparent);
     }
 
     * {
@@ -33,125 +86,242 @@
       min-height: 100vh;
       color: var(--text-0);
       font-family: "Space Grotesk", "Segoe UI", sans-serif;
-      background:
-        radial-gradient(1200px 500px at 100% -20%, rgba(251, 113, 133, 0.16), transparent 60%),
-        radial-gradient(900px 500px at 0% 110%, rgba(245, 158, 11, 0.12), transparent 60%),
-        linear-gradient(160deg, var(--bg-0), var(--bg-1) 45%, #0b1220);
-      padding: 28px 18px 42px;
+      background-color: var(--bg-body);
+      background-image: 
+        radial-gradient(circle at 10% 0%, var(--mesh-1) 0px, transparent 40%),
+        radial-gradient(circle at 90% 10%, var(--mesh-2) 0px, transparent 40%),
+        radial-gradient(circle at 50% 100%, var(--mesh-3) 0px, transparent 50%),
+        radial-gradient(circle at 0% 100%, var(--mesh-4) 0px, transparent 40%);
+      background-attachment: fixed;
+      padding: 40px 18px 60px;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    /* --- ANIMATIONEN --- */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes pulseDot {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+      70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
     }
 
     .shell {
       max-width: 1040px;
       margin: 0 auto;
       display: grid;
-      gap: 18px;
+      gap: 24px;
     }
 
+    /* --- GLASSMORPHISM BASIS FÜR BOXEN --- */
+    .hero, .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: 
+        0 20px 40px -10px rgba(0, 0, 0, 0.1), 
+        inset 0 1px 0 var(--card-shadow-inner);
+      opacity: 0;
+      animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    /* --- THEME TOGGLE BUTTON --- */
+    .theme-toggle {
+      background: var(--btn-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-0);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      flex-shrink: 0;
+    }
+    
+    .theme-toggle:hover {
+      transform: scale(1.05) translateY(-2px);
+      background: var(--btn-hover);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+    
+    .theme-toggle svg {
+      position: absolute;
+      width: 20px; height: 20px;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
+    
+    .theme-toggle .moon-icon { opacity: 0; transform: rotate(90deg) scale(0); }
+    .theme-toggle .sun-icon { opacity: 1; transform: rotate(0) scale(1); }
+    
+    [data-theme="dark"] .theme-toggle .moon-icon { opacity: 1; transform: rotate(0) scale(1); }
+    [data-theme="dark"] .theme-toggle .sun-icon { opacity: 0; transform: rotate(-90deg) scale(0); }
+
+    /* --- HERO BEREICH --- */
     .hero {
-      border: 1px solid var(--line);
-      border-radius: calc(var(--radius) + 4px);
-      background: linear-gradient(160deg, rgba(17, 24, 39, 0.82), rgba(15, 23, 42, 0.76));
-      box-shadow: var(--shadow);
-      padding: 24px;
+      padding: 40px;
       position: relative;
       overflow: hidden;
+      animation-delay: 0s;
     }
 
-    .hero::after {
+    .hero::before {
       content: "";
       position: absolute;
-      right: -120px;
-      top: -90px;
-      width: 360px;
-      height: 360px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(245, 158, 11, 0.18), transparent 65%);
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle, var(--spotlight) 0%, transparent 60%);
       pointer-events: none;
+      z-index: 0;
+      transition: background 0.4s ease;
+    }
+
+    .hero > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .title-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .truck-icon {
+      color: var(--acc-primary);
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(1.5rem, 2.2vw, 2.2rem);
-      letter-spacing: 0.01em;
-      line-height: 1.15;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--acc-primary), var(--acc-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
     }
 
     .sub {
-      margin: 9px 0 0;
+      margin: 16px 0 0;
       color: var(--text-1);
       max-width: 760px;
-      line-height: 1.5;
+      line-height: 1.6;
+      font-size: 1.1rem;
+      transition: color 0.4s ease;
     }
 
     .meta {
-      margin-top: 16px;
+      margin-top: 28px;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
     }
 
     .chip {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      border: 1px solid #3a4759;
-      background: rgba(12, 19, 30, 0.72);
-      color: var(--text-1);
-      padding: 6px 12px;
+      gap: 8px;
+      border: 1px solid var(--card-border);
+      background: var(--chip-bg);
+      color: var(--text-0);
+      padding: 8px 16px;
       border-radius: 999px;
       font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      backdrop-filter: blur(10px);
+      transition: all 0.4s ease;
     }
 
     .dot {
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--ok);
-      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.18);
+      animation: pulseDot 2s infinite; 
     }
 
     .grid {
       display: grid;
-      gap: 16px;
+      gap: 24px;
       grid-template-columns: 1.3fr 1fr;
     }
 
+    /* --- KARTEN (Cards) --- */
     .card {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(170deg, rgba(17, 24, 39, 0.84), rgba(15, 23, 42, 0.74));
-      box-shadow: var(--shadow);
-      padding: 18px;
+      padding: 32px;
+    }
+    
+    .grid .card:nth-child(1) { animation-delay: 0.15s; }
+    .grid .card:nth-child(2) { animation-delay: 0.3s; }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .card-header svg {
+      color: var(--acc-secondary);
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
     }
 
     .title {
       margin: 0;
-      font-size: 1rem;
-      color: var(--text-1);
-      letter-spacing: 0.02em;
+      font-size: 0.95rem;
+      color: var(--text-2);
+      letter-spacing: 0.08em;
       text-transform: uppercase;
+      font-weight: 700;
+      transition: color 0.4s ease;
     }
 
     .version {
       margin: 8px 0 0;
-      font-size: clamp(1.5rem, 2.6vw, 2rem);
-      font-weight: 700;
+      font-size: clamp(2rem, 3vw, 2.5rem);
+      font-weight: 800;
       line-height: 1.1;
+      color: var(--text-0);
+      transition: color 0.4s ease;
     }
 
     .changelog {
-      margin: 8px 0 0;
+      margin: 16px 0 0;
       color: var(--text-1);
-      line-height: 1.45;
-      font-size: 0.96rem;
+      line-height: 1.6;
+      font-size: 1rem;
       min-height: 2.9em;
+      background: var(--changelog-bg);
+      padding: 16px 20px;
+      border-radius: 16px;
+      border: 1px solid var(--card-border);
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+      transition: all 0.4s ease;
     }
 
+    /* --- BUTTONS --- */
     .actions {
-      margin-top: 15px;
+      margin-top: 24px;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      gap: 14px;
     }
 
     .btn {
@@ -159,79 +329,112 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      min-height: 44px;
+      min-height: 50px;
       text-decoration: none;
-      border-radius: 10px;
-      border: 1px solid #405066;
+      border-radius: 14px;
+      border: 1px solid var(--card-border);
       color: var(--text-0);
-      background: #1b2638;
+      background: var(--btn-bg);
       font-weight: 600;
-      padding: 10px 12px;
-      transition: transform 120ms ease, background-color 120ms ease, border-color 120ms ease;
+      padding: 10px 16px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      position: relative;
+      overflow: hidden;
     }
 
     .btn:hover {
-      transform: translateY(-1px);
-      border-color: #63748f;
-      background: #213146;
+      transform: translateY(-3px);
+      background: var(--btn-hover);
+      box-shadow: 0 10px 20px -5px rgba(0,0,0,0.08);
+      border-color: var(--line);
     }
 
     .btn.primary {
-      border-color: #b45309;
-      background: linear-gradient(135deg, #c26b0d, #a54f0f);
-      color: #fff8eb;
+      border: none;
+      background: linear-gradient(135deg, var(--acc-primary), var(--acc-secondary));
+      color: #ffffff;
+      box-shadow: 0 6px 16px rgba(99, 102, 241, 0.3);
     }
 
     .btn.primary:hover {
-      border-color: #f59e0b;
-      background: linear-gradient(135deg, #db7b10, #b15d13);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 24px rgba(99, 102, 241, 0.4);
     }
 
     .btn.disabled {
       pointer-events: none;
       opacity: 0.5;
-      filter: grayscale(0.2);
+      filter: grayscale(1);
+      box-shadow: none;
+      transform: none;
     }
 
+    /* --- LINKS & LISTEN --- */
     .links {
       display: grid;
-      gap: 8px;
-      margin-top: 12px;
+      gap: 12px;
+      margin-top: 20px;
     }
 
     .links a {
-      color: #f7d48a;
+      color: var(--acc-secondary);
       text-decoration: none;
-      border-bottom: 1px dashed rgba(247, 212, 138, 0.38);
+      font-weight: 600;
       width: fit-content;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    
+    .links a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--acc-secondary);
+      transition: width 0.3s ease;
+      border-radius: 2px;
     }
 
-    .links a:hover {
-      color: #fbe8be;
-      border-bottom-color: rgba(251, 232, 190, 0.7);
+    .links a:hover::after {
+      width: 100%;
     }
 
     .note {
-      margin: 14px 0 0;
+      margin: 20px 0 0;
       color: var(--text-2);
       font-size: 0.88rem;
-      line-height: 1.45;
+      transition: color 0.4s ease;
+    }
+    
+    .note code {
+      background: var(--code-bg);
+      padding: 3px 8px;
+      border-radius: 6px;
+      color: var(--text-0);
+      font-weight: 500;
+      transition: all 0.4s ease;
     }
 
+    /* --- RELEASE HISTORIE --- */
     .release-list {
-      margin-top: 14px;
+      margin-top: 28px;
       border-top: 1px solid var(--line);
-      padding-top: 12px;
+      padding-top: 24px;
       display: grid;
-      gap: 8px;
+      gap: 16px;
+      transition: border-color 0.4s ease;
     }
 
     .release-list h3 {
       margin: 0;
       font-size: 0.9rem;
-      color: var(--text-1);
-      letter-spacing: 0.02em;
+      color: var(--text-2);
+      letter-spacing: 0.05em;
       text-transform: uppercase;
+      transition: color 0.4s ease;
     }
 
     .release-list ul {
@@ -239,7 +442,7 @@
       padding: 0;
       list-style: none;
       display: grid;
-      gap: 7px;
+      gap: 10px;
     }
 
     .release-list li {
@@ -247,60 +450,91 @@
       justify-content: space-between;
       gap: 12px;
       color: var(--text-1);
-      font-size: 0.9rem;
-      line-height: 1.3;
-      border: 1px solid #374457;
-      border-radius: 9px;
-      background: rgba(13, 20, 31, 0.58);
-      padding: 7px 10px;
+      font-size: 0.95rem;
+      background: var(--list-bg);
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      transition: all 0.3s ease;
+    }
+    
+    .release-list li:hover {
+      background: var(--list-hover);
+      transform: translateX(4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      border-color: var(--line);
     }
 
     .release-list a {
-      color: #f8dd9f;
+      color: var(--text-0);
+      font-weight: 600;
       text-decoration: none;
-      border-bottom: 1px dashed rgba(248, 221, 159, 0.4);
+      transition: color 0.3s ease;
     }
 
     .release-list a:hover {
-      color: #fff1cc;
-      border-bottom-color: rgba(255, 241, 204, 0.72);
+      color: var(--acc-secondary);
     }
 
     .release-list .date {
       color: var(--text-2);
       white-space: nowrap;
+      font-size: 0.9rem;
+      transition: color 0.4s ease;
     }
 
     .wiki {
-      margin-top: 10px;
+      margin-top: 28px;
       font-family: "Source Serif 4", Georgia, serif;
-      color: #d7e1eb;
-      line-height: 1.55;
-      font-size: 1rem;
+      color: var(--text-1);
+      line-height: 1.6;
+      font-size: 1.05rem;
+      background: var(--wiki-bg);
+      border-left: 4px solid #fbd38d;
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      transition: all 0.4s ease;
     }
 
     footer {
-      margin-top: 8px;
-      text-align: center;
+      margin-top: 24px;
+      padding-bottom: 20px;
+      animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+      opacity: 0;
+      transition: color 0.4s ease;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
       color: var(--text-2);
-      font-size: 0.82rem;
+      font-size: 0.85rem;
+      text-align: center;
+      flex-wrap: wrap;
     }
 
     @media (max-width: 900px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .actions {
-        grid-template-columns: 1fr;
-      }
+      .grid { grid-template-columns: 1fr; }
+      .actions { grid-template-columns: 1fr; }
+      h1 { font-size: 2.2rem; }
     }
   </style>
 </head>
 <body>
   <main class="shell">
     <section class="hero">
-      <h1>ETS2 Overlay Feed</h1>
+      <div class="title-wrapper">
+        <svg class="truck-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 17h4V5H2v12h3"/>
+          <path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h2"/>
+          <path d="M14 17h1"/>
+          <circle cx="7.5" cy="17.5" r="2.5"/>
+          <circle cx="17.5" cy="17.5" r="2.5"/>
+        </svg>
+        <h1>ETS2 Overlay Feed</h1>
+      </div>
       <p class="sub">
         Öffentlicher Release-Feed mit Direkt-Downloads und kompakter Doku für die ETS2 Overlay Desktop-App.
       </p>
@@ -313,7 +547,10 @@
 
     <section class="grid">
       <article class="card">
-        <h2 class="title">Aktuelles Release</h2>
+        <div class="card-header">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+          <h2 class="title">Aktuelles Release</h2>
+        </div>
         <p class="version" id="version">v-</p>
         <p class="changelog" id="changelog">Release-Feed wird geladen...</p>
         <div class="actions">
@@ -334,7 +571,10 @@
       </article>
 
       <article class="card">
-        <h2 class="title">Dokumentation</h2>
+        <div class="card-header">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <h2 class="title">Dokumentation</h2>
+        </div>
         <div class="links">
           <a href="docs/README.md">Doku-Übersicht</a>
           <a href="docs/Funktionen.md">Funktionen</a>
@@ -350,7 +590,15 @@
     </section>
 
     <footer>
-      ETS2 Overlay Feed · Öffentlicher Mirror für Releases und Updater-Metadaten
+      <div class="footer-inner">
+        <span>ETS2 Overlay Feed · Öffentlicher Mirror für Releases und Updater-Metadaten</span>
+        
+        <!-- --- DER THEME TOGGLE BUTTON --- -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Dark Mode umschalten">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+      </div>
     </footer>
   </main>
 
@@ -469,6 +717,26 @@
 
     loadFeed();
     loadRecentReleases();
+
+    // --- LOGIK FÜR DEN DARK MODE ---
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    
+    // 1. Prüfe, ob der Nutzer schon mal etwas eingestellt hat, oder ob das Betriebssystem Dunkelmodus bevorzugt
+    const savedTheme = localStorage.getItem('ets2-theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme ? savedTheme : (systemPrefersDark ? 'dark' : 'light');
+    
+    // Initiales Setzen
+    document.documentElement.setAttribute('data-theme', initialTheme);
+
+    // 2. Klick-Event für den Button
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('ets2-theme', newTheme);
+    });
   </script>
 </body>
 </html>
