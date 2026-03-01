@@ -45,6 +45,20 @@ Das Control Panel ist in mehrere Bereiche aufgeteilt.
 - Diagnose aktualisieren
 - erweiterte Diagnose starten
 - Der Banner-Button führt auf die öffentliche Download-Seite mit Plattform-Auswahl
+- Update-Kanal umschaltbar (`stable`/`alpha`) fuer Tester-Builds
+
+## In-Game Overlay (Beta)
+
+Eigene Sparte fuer ein Desktop-Overlay direkt ueber dem Spiel (getrennt vom OBS Browser Overlay).
+
+- Plattformziel: Windows stabil, Linux experimentell
+- Global ein-/ausschalten
+- Always-on-top, Click-through, Deckkraft
+- Radar FPS Limit waehlbar (`24`, `30`, `45`, `60`) fuer bessere Performance-Kontrolle
+- globaler Hotkey zum Ein-/Ausblenden
+- Widgets einzeln steuerbar: `job`, `fuel`, `damage`, `time`, `indicators`, `weather`, `session`, `radar`, `gear`
+- Legacy-Option: `info` als Komplettpanel bleibt optional verfuegbar
+- In-Game Layout Designer mit Drag-and-Drop fuer Widget-Positionen (X/Y werden live synchronisiert)
 
 ## Twitch Setup
 
