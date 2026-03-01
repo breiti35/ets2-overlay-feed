@@ -5,7 +5,7 @@ Das Control Panel ist in mehrere Bereiche aufgeteilt.
 ## Layout Designer
 
 - Positionen von Modulen setzen
-- Groessen und Skalierung anpassen
+- Größen und Skalierung anpassen
 - Presets laden/speichern
 
 ## Module
@@ -31,7 +31,7 @@ Das Control Panel ist in mehrere Bereiche aufgeteilt.
 - Popup-Dauer
 - Command-Cooldown
 - Global Scale
-- Canvas-Aufloesung
+- Canvas-Auflösung
 
 ### OBS
 
@@ -40,7 +40,7 @@ Das Control Panel ist in mehrere Bereiche aufgeteilt.
 ### Update & Diagnose
 
 - Update-Status live anzeigen
-- manuell auf Updates pruefen
+- manuell auf Updates prüfen
 - Diagnose aktualisieren
 - erweiterte Diagnose starten
 

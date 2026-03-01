@@ -2,12 +2,12 @@
 
 ## Kernfunktionen
 
-- Live-Telemetrie fuer Euro Truck Simulator 2
-- Overlay fuer OBS als Browser Source
+- Live-Telemetrie für Euro Truck Simulator 2
+- Overlay für OBS als Browser Source
 - Layout-Editor mit Drag-and-Drop
 - Twitch- und YouTube-Chatbot
 - In-App-Update-Check mit Download-Link
-- Diagnosebereich fuer Telemetrie und Update-Status
+- Diagnosebereich für Telemetrie und Update-Status
 
 ## Overlay-Module
 
@@ -19,14 +19,14 @@ Typische Module im Control Panel:
 - Alerts
 - Session-Infos
 
-Je nach Theme und Layout sind Position, Sichtbarkeit und Groesse anpassbar.
+Je nach Theme und Layout sind Position, Sichtbarkeit und Größe anpassbar.
 
 ## Update-Funktion
 
 Im Bereich `System -> Update & Diagnose` findest du:
 
 - aktuellen Versionsstatus
-- letzte Pruefzeit
+- letzte Prüfzeit
 - verwendete Update-Quelle
 - Hinweise bei Fehlern
 

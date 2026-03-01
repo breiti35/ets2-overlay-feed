@@ -1,18 +1,18 @@
-# Problemloesung
+# Problemlösung
 
 ## Update zeigt 404 beim Download
 
 Ursache: alter Link oder gecachter Feed.
 
-Loesung:
+Lösung:
 
-1. In `System -> Update & Diagnose` auf `Jetzt auf Updates pruefen` klicken
+1. In `System -> Update & Diagnose` auf `Jetzt auf Updates prüfen` klicken
 2. App neu starten
-3. Wenn noetig kurz warten (CDN/Pages-Cache)
+3. Wenn nötig kurz warten (CDN/Pages-Cache)
 
-## Klick auf "Herunterladen" oeffnet kein Browserfenster
+## Klick auf "Herunterladen" öffnet kein Browserfenster
 
-Seit den aktuellen Versionen werden externe Links direkt im Standardbrowser geoeffnet.
+Seit den aktuellen Versionen werden externe Links direkt im Standardbrowser geöffnet.
 
 Wenn trotzdem ein internes Fenster erscheint:
 
@@ -21,7 +21,7 @@ Wenn trotzdem ein internes Fenster erscheint:
 
 ## Telemetrie bleibt offline
 
-Pruefe im Bereich `Update & Diagnose`:
+Prüfe im Bereich `Update & Diagnose`:
 
 - `Telemetrie Modus`
 - `SDK verbunden`
@@ -35,7 +35,7 @@ Tipps:
 
 ## Twitch Bot antwortet nicht
 
-Pruefen:
+Prüfen:
 
 - `Twitch Bot aktiv` eingeschaltet
 - Username, OAuth-Token und Channel korrekt
@@ -43,10 +43,10 @@ Pruefen:
 
 ## YouTube Bot antwortet nicht
 
-Pruefen:
+Prüfen:
 
 - `YouTube Bot aktiv` eingeschaltet
-- API-Key gueltig
+- API-Key gültig
 - Live-Video-ID korrekt
 
 ## Einstellungen sind nach Neustart weg
@@ -60,4 +60,4 @@ Wenn Werte fehlen:
 
 ## Overlay in OBS falsch skaliert
 
-Stelle sicher, dass `Canvas Aufloesung` und OBS Browser Source dieselbe Aufloesung nutzen.
+Stelle sicher, dass `Canvas Auflösung` und OBS Browser Source dieselbe Auflösung nutzen.

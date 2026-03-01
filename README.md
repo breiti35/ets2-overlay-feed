@@ -1,37 +1,37 @@
 # ETS2 Overlay Feed
 
-Dieses Repository ist die oeffentliche Update- und Download-Quelle fuer den Desktop-Client von ETS2 Overlay.
+Dieses Repository ist die öffentliche Update- und Download-Quelle für den Desktop-Client von ETS2 Overlay.
 
 Hier findest du:
 
-- oeffentliche Releases (Windows Installer + Linux AppImage)
-- `version.json` fuer den In-App-Update-Checker
+- öffentliche Releases (Windows Installer + Linux AppImage)
+- `version.json` für den In-App-Update-Checker
 - kompakte Nutzer-Dokumentation zu Funktionen, Einstellungen und Bot-Kommandos
 - eine kleine Troubleshooting-Wiki im Repo
 
 ## Schnellstart
 
-1. Oeffne die aktuellen Downloads: [Releases](https://github.com/breiti35/ets2-overlay-feed/releases/latest)
+1. Öffne die aktuellen Downloads: [Releases](https://github.com/breiti35/ets2-overlay-feed/releases/latest)
 2. Installiere die passende Datei:
    - Windows: `ETS2.Overlay.Setup-<version>.exe`
    - Linux: `ETS2.Overlay-<version>.AppImage`
-3. Starte die App und oeffne im linken Menue den Bereich `System`.
-4. Im Block `Update & Diagnose` kannst du jederzeit auf `Jetzt auf Updates pruefen` klicken.
+3. Starte die App und öffne im linken Menü den Bereich `System`.
+4. Im Block `Update & Diagnose` kannst du jederzeit auf `Jetzt auf Updates prüfen` klicken.
 
 ## Dokumentation
 
-- [Uebersicht](docs/README.md)
+- [Übersicht](docs/README.md)
 - [Funktionen](docs/Funktionen.md)
 - [Einstellungen](docs/Einstellungen.md)
 - [Bot-Kommandos](docs/Bot-Kommandos.md)
-- [Problemloesung](docs/Problemloesung.md)
+- [Problemlösung](docs/Problemloesung.md)
 
 ## Mini-Wiki (im Repo)
 
 - [Wiki Home](wiki/Home.md)
-- [Wiki Problemloesung](wiki/Problemloesung.md)
+- [Wiki Problemlösung](wiki/Problemloesung.md)
 
-Hinweis: Die GitHub-Wiki kann spaeter zusaetzlich aktiviert/befuellt werden. Solange sie leer ist, liegen die Wiki-Inhalte direkt im Ordner `wiki/`.
+Hinweis: Die GitHub-Wiki kann später zusätzlich aktiviert/befüllt werden. Solange sie leer ist, liegen die Wiki-Inhalte direkt im Ordner `wiki/`.
 
 ## Update-Feed
 
@@ -49,4 +49,4 @@ Beispiel-Felder:
 
 ## Support
 
-Wenn etwas nicht funktioniert, starte mit [Problemloesung](docs/Problemloesung.md). Dort sind die haeufigsten Ursachen und Fixes gesammelt.
+Wenn etwas nicht funktioniert, starte mit [Problemlösung](docs/Problemloesung.md). Dort sind die häufigsten Ursachen und Fixes gesammelt.

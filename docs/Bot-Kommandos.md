@@ -46,4 +46,4 @@ Unter `Custom Commands` kannst du beliebige Befehle anlegen:
 Beispiel:
 
 - Command: `!moin`
-- Antwort: `Moin {user}, schoen dass du da bist!`
+- Antwort: `Moin {user}, schön dass du da bist!`

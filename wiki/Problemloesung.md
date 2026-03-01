@@ -1,12 +1,12 @@
-# Wiki: Problemloesung
+# Wiki: Problemlösung
 
-## Hauefige Probleme
+## Häufige Probleme
 
 ### 1) Download klappt nicht
 
-- Update erneut pruefen
+- Update erneut prüfen
 - App neu starten
-- Release-Seite direkt oeffnen: <https://github.com/breiti35/ets2-overlay-feed/releases/latest>
+- Release-Seite direkt öffnen: <https://github.com/breiti35/ets2-overlay-feed/releases/latest>
 
 ### 2) Bot reagiert nicht
 
@@ -16,11 +16,11 @@
 
 ### 3) Keine Telemetrie
 
-- ETS2 laeuft?
+- ETS2 läuft?
 - Diagnose-Block in `System` kontrollieren
 
-### 4) OBS zeigt falsche Groesse
+### 4) OBS zeigt falsche Größe
 
-- OBS Browser Source auf gleiche Aufloesung wie `Canvas Aufloesung` stellen
+- OBS Browser Source auf gleiche Auflösung wie `Canvas Auflösung` stellen
 
-Fuer Details: [docs/Problemloesung.md](../docs/Problemloesung.md)
+Für Details: [docs/Problemloesung.md](../docs/Problemloesung.md)
