@@ -45,7 +45,7 @@ Das Control Panel ist in mehrere Bereiche aufgeteilt.
 - Diagnose aktualisieren
 - erweiterte Diagnose starten
 - Der Banner-Button führt auf die öffentliche Download-Seite mit Plattform-Auswahl
-- Update-Kanal umschaltbar (`stable`/`alpha`) fuer Tester-Builds
+- Oeffentlicher Feed nutzt nur den `stable`-Kanal (Alpha bleibt intern)
 
 ## In-Game Overlay (Beta)
 
