@@ -23,4 +23,9 @@
 
 - OBS Browser Source auf gleiche Auflösung wie `Canvas Auflösung` stellen
 
+### 5) Linux: AppImage startet nicht (libfuse.so.2)
+
+- `.tar.gz`-Variante aus den Releases verwenden (kein FUSE nötig)
+- oder: `APPIMAGE_EXTRACT_AND_RUN=1 ./ets2-overlay-*.AppImage`
+
 Für Details: [docs/Problemloesung.md](../docs/Problemloesung.md)
