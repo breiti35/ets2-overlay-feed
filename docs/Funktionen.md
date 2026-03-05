@@ -21,6 +21,14 @@ Typische Module im Control Panel:
 
 Je nach Theme und Layout sind Position, Sichtbarkeit und Größe anpassbar.
 
+## In-Game Desktop-Overlay
+
+- Transparentes Overlay direkt über ETS2, unabhängig von OBS
+- Auto-Hide: blendet sich automatisch aus wenn ETS2/ATS nicht im Vordergrund ist (Windows)
+- Demo-Modus: Overlay mit simulierten Telemetriedaten ohne laufendes Spiel starten
+- Layout-Editor für In-Game Widgets (Drag-and-Drop, Snap-to-Grid)
+- Editor-Modus per Exit-Button beenden (blauer Bar oben im Overlay)
+
 ## Update-Funktion
 
 Im Bereich `System -> Update & Diagnose` findest du:

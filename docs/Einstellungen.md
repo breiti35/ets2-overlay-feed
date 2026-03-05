@@ -61,6 +61,11 @@ Eigene Sparte fuer ein Desktop-Overlay direkt ueber dem Spiel (getrennt vom OBS 
 - Legacy-Option: `info` als Komplettpanel bleibt optional verfuegbar
 - Legacy-`info` nutzt volle Fensterhoehe, damit keine Unter-Module abgeschnitten werden
 - In-Game Layout Designer mit Drag-and-Drop fuer Widget-Positionen (X/Y werden live synchronisiert)
+- Demo-Modus: Overlay mit simulierten Fahrtdaten ohne laufendes Spiel starten
+  (Settings → In-Game → „Demo-Modus starten")
+- Demo-Badge (orange, oben mittig) kennzeichnet den Modus visuell
+- Fake-Chat-Nachrichten erscheinen automatisch alle 3–8 Sekunden im Demo-Modus
+- Editor-Modus: Blauer Bar mit „✕ Editor beenden"-Button oben im Overlay zum einfachen Beenden
 
 ## Twitch Setup
 
