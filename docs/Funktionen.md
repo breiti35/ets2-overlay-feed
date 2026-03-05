@@ -24,6 +24,7 @@ Je nach Theme und Layout sind Position, Sichtbarkeit und Größe anpassbar.
 ## In-Game Desktop-Overlay
 
 - Transparentes Overlay direkt über ETS2, unabhängig von OBS
+- Korrekte Positionierung bei Multi-Monitor-Setups (Primärmonitor wird zuverlässig erkannt)
 - Auto-Hide: blendet sich automatisch aus wenn ETS2/ATS nicht im Vordergrund ist (Windows)
 - Demo-Modus: Overlay mit simulierten Telemetriedaten ohne laufendes Spiel starten
 - Layout-Editor für In-Game Widgets (Drag-and-Drop, Snap-to-Grid)
