@@ -33,6 +33,23 @@ Tipps:
 - ETS2 muss laufen
 - auf Linux/Proton: sicherstellen, dass Bridge/Prozesszugriff funktioniert
 
+## Linux/Proton: Keine Telemetrie mit TruckersMP
+
+**Ursache:** TruckersMP startet ETS2 über einen eigenen Launcher-Prozess. Die normale Prozesserkennung findet dabei nicht immer den richtigen Wine-Prozess.
+
+**Ab v1.0.10-alpha.9** sucht die Bridge automatisch per Fallback-Scan alle laufenden Prozesse nach dem Wine-SHM-Mapping durch — unabhängig vom Prozessnamen.
+
+Im Log erscheint dann:
+```
+[Linux-Bridge] Wine-SHM gefunden via Fallback-Scan (PID xxxxx)
+```
+
+Falls das nicht hilft:
+
+- sicherstellen, dass das `scs-sdk-plugin.dll` korrekt im ETS2-Plugin-Ordner installiert ist
+- `ptrace`-Rechte prüfen (AppImage benötigt Zugriff auf `/proc/<pid>/mem`)
+- AppImage als Root oder mit `CAP_SYS_PTRACE` starten (nur zum Testen)
+
 ## Twitch Bot antwortet nicht
 
 Prüfen:
